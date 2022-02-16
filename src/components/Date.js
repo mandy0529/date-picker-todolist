@@ -1,21 +1,23 @@
-import DatePicker from "react-datepicker";
 import styled from "styled-components";
-import { useGlobalContext } from "../context/AppContext";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import DatePicker from "@mui/lab/DatePicker";
 import { TextField } from "@mui/material";
+import { useState } from "react";
+import { useGlobalContext } from "../context/AppContext";
 
 function Date() {
-  const { handleDate, startDate } = useGlobalContext();
+    const {handleDate,selectedDate}=useGlobalContext();
 
   return (
     <Wrapper>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DesktopDatePicker
+        <DatePicker
           label={"선택날짜"}
-          value={startDate}
-          onChange={handleDate}
+          value={selectedDate}
+          onChange={(date)=>handleDate(date)}
+          inputFormat={"yyyy-MM-dd"}
+          mask={"____-__-__"}
           renderInput={(params) => <TextField {...params} />}
         />
       </LocalizationProvider>
