@@ -25,6 +25,14 @@ const AppProvider = ({ children }) => {
     setName(value);
   };
 
+  const handleDelete=(id)=>{
+      const deletedItem=items.filter((item)=>item.id!==id);
+      setItems(deletedItem);
+  }
+
+  const handleClear=()=>{
+      setItems([]);
+  };
   return (
     <AppContext.Provider
       value={{
@@ -35,6 +43,8 @@ const AppProvider = ({ children }) => {
         handleDate,
         selectedDate,
         items,
+        handleDelete,
+        handleClear
       }}
     >
       {children}

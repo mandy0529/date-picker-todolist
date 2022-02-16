@@ -4,7 +4,7 @@ import { useGlobalContext } from "../context/AppContext";
 import Button from "@mui/material/Button";
 
 function List() {
-  const { items } = useGlobalContext();
+  const { items, handleDelete, handleClear } = useGlobalContext();
   return (
     <Wrapper>
       {items &&
@@ -19,18 +19,20 @@ function List() {
                 variant="contained"
                 type="delete"
                 className="delete-btn"
+                onClick={()=>handleDelete(id)}
               >
                 delete
               </Button>
             </ul>
           );
         })}
-      {items.length > 1 && (
+      {items.length > 0 && (
         <Button
           color="error"
           variant="outlined"
           type="delete"
           className="clear-btn"
+          onClick={handleClear}
         >
           clear
         </Button>
@@ -40,7 +42,7 @@ function List() {
 }
 
 const Wrapper = styled.div`
-margin-top:3rem;
+  margin-top: 3rem;
   ul {
     display: flex;
     align-items: center;
