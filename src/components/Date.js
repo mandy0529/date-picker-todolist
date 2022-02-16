@@ -1,21 +1,18 @@
-import { useState } from "react";
 import DatePicker from "react-datepicker";
-import Button from "@mui/material/Button";
+import styled from "styled-components";
+import { useGlobalContext } from "../context/AppContext";
 
 function Date() {
-  const [startDate, setStartDate] = useState();
+  const { handleDate,startDate } = useGlobalContext();
 
   return (
-    <div>
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-      />
-      <Button variant="contained" color="primary">
-       add
-      </Button>
-    </div>
+    <Wrapper>
+      <DatePicker selected={startDate} onChange={handleDate} />
+    </Wrapper>
   );
 }
 
+const Wrapper=styled.div`
+margin:2rem;
+`;
 export default Date;

@@ -5,8 +5,13 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [name, setName] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
 
-  return <AppContext.Provider value={{}}>{children}</AppContext.Provider>;
+  const handleDate=()=>{
+      setStartDate(prev=>setStartDate(prev))
+  };
+
+  return <AppContext.Provider value={{handleDate,startDate}}>{children}</AppContext.Provider>;
 };
 
 export const useGlobalContext = () => {
