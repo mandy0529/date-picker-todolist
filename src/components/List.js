@@ -12,17 +12,19 @@ function List() {
           const { id, title, date } = item;
           return (
             <ul key={id}>
-              <li> {title}</li>
-              <span>{date}</span>
-              <Button
-                color="error"
-                variant="contained"
-                type="delete"
-                className="delete-btn"
-                onClick={()=>handleDelete(id)}
-              >
-                delete
-              </Button>
+              <span>✅{date}에 할 일</span>
+              <div className="todo-list">
+                <li> {title}</li>
+                <Button
+                  color="error"
+                  variant="contained"
+                  type="delete"
+                  className="delete-btn"
+                  onClick={() => handleDelete(id)}
+                >
+                  delete
+                </Button>
+              </div>
             </ul>
           );
         })}
@@ -44,13 +46,23 @@ function List() {
 const Wrapper = styled.div`
   margin-top: 3rem;
   ul {
+    max-width:30%;
+      padding:1rem;
+      border-radius:5px;
+      border:2px solid lightgray;
+      margin:1rem auto;
+
+  }
+  .todo-list {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 1rem;
+
     li {
       font-size: 1.3rem;
       font-weight: bold;
+     
     }
     span {
       margin: 0 1rem;

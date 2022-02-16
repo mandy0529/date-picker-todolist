@@ -1,10 +1,19 @@
-import React, { useContext, useState } from "react";
-import dayjs from 'dayjs';
+import React, { useContext, useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 const AppContext = React.createContext();
 
+function getLocalStorage() {
+  let items = localStorage.getItem("items");
+  if (items) {
+    return (items = JSON.parse(localStorage.getItem("items")));
+  } else {
+    return [];
+  }
+}
+
 const AppProvider = ({ children }) => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(getLocalStorage());
   const [name, setName] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const dateFormat = dayjs(selectedDate).format("YYYY-MM-DD");
@@ -25,14 +34,19 @@ const AppProvider = ({ children }) => {
     setName(value);
   };
 
-  const handleDelete=(id)=>{
-      const deletedItem=items.filter((item)=>item.id!==id);
-      setItems(deletedItem);
-  }
-
-  const handleClear=()=>{
-      setItems([]);
+  const handleDelete = (id) => {
+    const deletedItem = items.filter((item) => item.id !== id);
+    setItems(deletedItem);
   };
+
+  const handleClear = () => {
+    setItems([]);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
+
   return (
     <AppContext.Provider
       value={{
@@ -44,7 +58,7 @@ const AppProvider = ({ children }) => {
         selectedDate,
         items,
         handleDelete,
-        handleClear
+        handleClear,
       }}
     >
       {children}
