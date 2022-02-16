@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Date from "./components/Date";
 import Form from "./components/Form";
+import { useGlobalContext } from "./context/AppContext";
 
 function App() {
   return (
     <Wrapper className="App">
       <h1>Date Picker To do list</h1>
+
       <div className="app-list">
         <Date />
         <Form />
@@ -16,10 +18,10 @@ function App() {
 
 const Wrapper = styled.div`
   h1 {
-    margin:2rem;
-    font-size:1.5rem;
-    font-weight:bold;
-}
+    margin: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 `;
 
 export default App;
