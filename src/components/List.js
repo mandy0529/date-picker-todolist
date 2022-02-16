@@ -12,7 +12,7 @@ function List() {
           const { id, title, date } = item;
           return (
             <ul key={id}>
-              <span>✅{date}에 할 일</span>
+              <span>✅{date} 에 할 일</span>
               <div className="todo-list">
                 <li> {title}</li>
                 <Button

@@ -3,7 +3,6 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import DatePicker from "@mui/lab/DatePicker";
 import { TextField } from "@mui/material";
-import { useState } from "react";
 import { useGlobalContext } from "../context/AppContext";
 
 function Date() {

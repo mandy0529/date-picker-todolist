@@ -2,15 +2,12 @@ import styled from "styled-components";
 import Date from "./components/Date";
 import Form from "./components/Form";
 import List from "./components/List";
-import { useGlobalContext } from "./context/AppContext";
 
 function App() {
-  const { items } = useGlobalContext();
-
   return (
     <Wrapper className="App">
       <h1>Date Picker To do list</h1>
-
+    
       <div className="app-list">
         <Date />
         <Form />
